@@ -1,0 +1,218 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>DEMO for "Latent Variable Graphical Model Selection using Harmonic Analysis"</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-06-24"><meta name="DC.source" content="DEMO.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>DEMO for "Latent Variable Graphical Model Selection using Harmonic Analysis"</h1><!--introduction--><p><a href="http://pages.cs.wisc.edu/~wonhwa/">Won Hwa Kim</a>*, <a href="http://pages.cs.wisc.edu/~hwkim/">Hyunwoo J. Kim</a>*, Nagesh Adluru, Vikas Singh, Latent Variable Graphical Model Selection using Harmonic Analysis: Applications to the Human Connectome Project (HCP), Computer Vision and Pattern Recognition (CVPR) , June, 2016 (<b>Spotlight</b>). <b>Both * are the joint first authors</b>.</p><p>Project page: <a href="http://pages.cs.wisc.edu/~hwkim/projects/k-gmm/">http://pages.cs.wisc.edu/~hwkim/projects/k-gmm/</a></p><p>Github repository: <a href="http://github.com/MLman/lvgm-cvpr2016/">http://github.com/MLman/lvgm-cvpr2016/</a></p><p>Github page: <a href="http://mlman.github.io/lvgm-cvpr2016/">http://mlman.github.io/lvgm-cvpr2016/</a></p><p>The last update by <a href="http://pages.cs.wisc.edu/~hwkim/index.html">Hyunwoo J Kim</a>  2016/06/24 13:43:24 (CDT) (CST)</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Data synthesis</a></li><li><a href="#2">Proposed method.</a></li><li><a href="#3">visualization</a></li></ul></div><h2>Data synthesis<a name="1"></a></h2><pre class="codeinput">clc;clear;close <span class="string">all</span>;
+rng <span class="string">default</span>
+N = 70;
+NO = 50;
+NC = 10;
+density = .5e-1; <span class="comment">% a rough estimate of the amount of edges</span>
+[theta,theta_GT]= random_sparse_network(NO, NC, N, density);
+
+<span class="comment">% covariance matrix</span>
+sigma = pinv(theta);
+sigma = (sigma+sigma')./2;
+mu = zeros(1,N);
+
+nsamples = 2000;
+r = mvnrnd(mu,sigma,nsamples);
+Xo = r(1:nsamples, 1:NO+NC);
+Cov = Xo'*Xo./nsamples;
+P = pinv(Cov);
+</pre><h2>Proposed method.<a name="2"></a></h2><pre class="codeinput">A0 = inv(Cov);
+invA0 = Cov;
+[V, D] = eig(Cov);
+lambda = diag(D);
+
+<span class="comment">% kernel function</span>
+kid = 1;
+kernel = mysgwt_func(kid);
+option.c1 =0.01; <span class="comment">% step size</span>
+option.gamma = 2; <span class="comment">% sparsity parmeter`</span>
+option.s0 = .2;  <span class="comment">% intial point</span>
+option.tol = 1e-5; <span class="comment">% tolerance</span>
+option.niter = 20000; <span class="comment">% number of iteration</span>
+option.kernel = kernel; <span class="comment">% Normalized Kernel function and derivative.</span>
+
+tic;
+[A, s_opt, ghistory, fhistory] =  faster_solverK(V, D, option);
+toc;
+
+thetaO = theta(1:NO+NC, 1:NO+NC) ;
+AA = abs(A);
+PP = abs(P);
+low = 0.01;
+high = .5;
+</pre><pre class="codeoutput">iter 1, f=2.284884 |grad|=0.000055, s=0.200001
+iter 2, f=2.284894 |grad|=0.000055, s=0.200001
+iter 3, f=2.284905 |grad|=0.000055, s=0.200002
+iter 4, f=2.284916 |grad|=0.000055, s=0.200002
+iter 5, f=2.284927 |grad|=0.000055, s=0.200003
+iter 6, f=2.284938 |grad|=0.000055, s=0.200003
+iter 7, f=2.284949 |grad|=0.000055, s=0.200004
+...
+iter 5813, f=2.313956 |grad|=0.000010, s=0.201447
+iter 5814, f=2.313958 |grad|=0.000010, s=0.201447
+iter 5815, f=2.313960 |grad|=0.000010, s=0.201447
+iter 5816, f=2.313962 |grad|=0.000010, s=0.201448
+Elapsed time is 2.833642 seconds.
+</pre><h2>visualization<a name="3"></a></h2><pre class="codeinput">low = 0.1;
+high = 1;
+figure;
+subplot(1,3,1);imagesc(abs(theta_GT(1:(NO+NC),1:(NO+NC))));colorbar;caxis([low high])
+title(<span class="string">'Ground Truth'</span>);
+subplot(1,3,2);imagesc(abs(AA));colorbar;caxis([low high])
+title(<span class="string">'Ours'</span>);
+subplot(1,3,3);imagesc(abs(P));colorbar;caxis([low high])
+title(<span class="string">'Raw precision matrix'</span>);
+colormap <span class="string">hot</span>
+</pre><img vspace="5" hspace="5" src="DEMO_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% DEMO for "Latent Variable Graphical Model Selection using Harmonic Analysis"
+% <http://pages.cs.wisc.edu/~wonhwa/ Won Hwa Kim>*, 
+% <http://pages.cs.wisc.edu/~hwkim/ Hyunwoo J. Kim>*, Nagesh Adluru, Vikas Singh, 
+% Latent Variable Graphical Model Selection using Harmonic Analysis: 
+% Applications to the Human Connectome Project (HCP), 
+% Computer Vision and Pattern Recognition (CVPR) , June, 2016
+% (*Spotlight*). 
+% *Both * are the joint first authors*.
+%
+% Project page:
+% http://pages.cs.wisc.edu/~hwkim/projects/k-gmm/
+%
+% Github repository:
+% http://github.com/MLman/lvgm-cvpr2016/
+%
+% Github page:
+% http://mlman.github.io/lvgm-cvpr2016/
+%
+% The last update by <http://pages.cs.wisc.edu/~hwkim/index.html Hyunwoo J Kim>  2016/06/24 13:43:24 (CDT) (CST)
+
+%% Data synthesis
+clc;clear;close all;
+rng default
+N = 70;
+NO = 50;
+NC = 10;
+density = .5e-1; % a rough estimate of the amount of edges       
+[theta,theta_GT]= random_sparse_network(NO, NC, N, density);
+
+% covariance matrix
+sigma = pinv(theta);
+sigma = (sigma+sigma')./2;
+mu = zeros(1,N);
+
+nsamples = 2000;
+r = mvnrnd(mu,sigma,nsamples);
+Xo = r(1:nsamples, 1:NO+NC);
+Cov = Xo'*Xo./nsamples;
+P = pinv(Cov);
+
+
+%% Proposed method.
+A0 = inv(Cov);
+invA0 = Cov;
+[V, D] = eig(Cov);
+lambda = diag(D);
+
+% kernel function
+kid = 1;
+kernel = mysgwt_func(kid);
+option.c1 =0.01; % step size
+option.gamma = 2; % sparsity parmeter`
+option.s0 = .2;  % intial point
+option.tol = 1e-5; % tolerance
+option.niter = 20000; % number of iteration
+option.kernel = kernel; % Normalized Kernel function and derivative.
+
+tic;
+[A, s_opt, ghistory, fhistory] =  faster_solverK(V, D, option);
+toc;
+
+thetaO = theta(1:NO+NC, 1:NO+NC) ;
+AA = abs(A);
+PP = abs(P);
+low = 0.01;
+high = .5;
+
+%% visualization
+low = 0.1;
+high = 1;
+figure;
+subplot(1,3,1);imagesc(abs(theta_GT(1:(NO+NC),1:(NO+NC))));colorbar;caxis([low high])
+title('Ground Truth');
+subplot(1,3,2);imagesc(abs(AA));colorbar;caxis([low high])
+title('Ours');
+subplot(1,3,3);imagesc(abs(P));colorbar;caxis([low high])
+title('Raw precision matrix');
+colormap hot
+
+
+
+##### SOURCE END #####
+--></body></html>
