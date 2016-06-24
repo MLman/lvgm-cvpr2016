@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>DEMO for "Latent Variable Graphical Model Selection using Harmonic Analysis"</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-06-24"><meta name="DC.source" content="DEMO.m"><style type="text/css">
+      --><title>DEMO for "Latent Variable Graphical Model Selection using Harmonic Analysis"</title><meta name="generator" content="MATLAB 8.4"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-06-24"><meta name="DC.source" content="DEMO.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -23,7 +23,7 @@ a:visited { color:#004aa0; text-decoration:none; }
 
 p { padding:0px; margin:0px 0px 20px; }
 img { padding:0px; margin:0px 0px 20px; border:none; }
-p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
 
 ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
 ul li { padding:0px; margin:0px 0px 7px 0px; }
@@ -115,15 +115,21 @@ iter 4, f=2.284916 |grad|=0.000055, s=0.200002
 iter 5, f=2.284927 |grad|=0.000055, s=0.200003
 iter 6, f=2.284938 |grad|=0.000055, s=0.200003
 iter 7, f=2.284949 |grad|=0.000055, s=0.200004
+iter 8, f=2.284960 |grad|=0.000055, s=0.200004
+iter 9, f=2.284971 |grad|=0.000055, s=0.200005
+iter 10, f=2.284982 |grad|=0.000055, s=0.200005
 ...
+iter 5811, f=2.313952 |grad|=0.000010, s=0.201447
+iter 5812, f=2.313954 |grad|=0.000010, s=0.201447
 iter 5813, f=2.313956 |grad|=0.000010, s=0.201447
 iter 5814, f=2.313958 |grad|=0.000010, s=0.201447
 iter 5815, f=2.313960 |grad|=0.000010, s=0.201447
 iter 5816, f=2.313962 |grad|=0.000010, s=0.201448
-Elapsed time is 2.833642 seconds.
+Elapsed time is 3.016885 seconds.
 </pre><h2>visualization<a name="3"></a></h2><pre class="codeinput">low = 0.1;
 high = 1;
 figure;
+set(gcf,<span class="string">'units'</span>,<span class="string">'normalized'</span>,<span class="string">'position'</span>,[0 0 1 1]);
 subplot(1,3,1);imagesc(abs(theta_GT(1:(NO+NC),1:(NO+NC))));colorbar;caxis([low high])
 title(<span class="string">'Ground Truth'</span>);
 subplot(1,3,2);imagesc(abs(AA));colorbar;caxis([low high])
@@ -131,19 +137,16 @@ title(<span class="string">'Ours'</span>);
 subplot(1,3,3);imagesc(abs(P));colorbar;caxis([low high])
 title(<span class="string">'Raw precision matrix'</span>);
 colormap <span class="string">hot</span>
-</pre><img vspace="5" hspace="5" src="DEMO_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+</pre><img vspace="5" hspace="5" src="DEMO_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% DEMO for "Latent Variable Graphical Model Selection using Harmonic Analysis"
-% <http://pages.cs.wisc.edu/~wonhwa/ Won Hwa Kim>*, 
-% <http://pages.cs.wisc.edu/~hwkim/ Hyunwoo J. Kim>*, Nagesh Adluru, Vikas Singh, 
-% Latent Variable Graphical Model Selection using Harmonic Analysis: 
-% Applications to the Human Connectome Project (HCP), 
+% <http://pages.cs.wisc.edu/~wonhwa/ Won Hwa Kim>*,
+% <http://pages.cs.wisc.edu/~hwkim/ Hyunwoo J. Kim>*, Nagesh Adluru, Vikas Singh,
+% Latent Variable Graphical Model Selection using Harmonic Analysis:
+% Applications to the Human Connectome Project (HCP),
 % Computer Vision and Pattern Recognition (CVPR) , June, 2016
-% (*Spotlight*). 
+% (*Spotlight*).
 % *Both * are the joint first authors*.
-%
-% Project page:
-% http://pages.cs.wisc.edu/~hwkim/projects/k-gmm/
 %
 % Github repository:
 % http://github.com/MLman/lvgm-cvpr2016/
@@ -159,7 +162,7 @@ rng default
 N = 70;
 NO = 50;
 NC = 10;
-density = .5e-1; % a rough estimate of the amount of edges       
+density = .5e-1; % a rough estimate of the amount of edges
 [theta,theta_GT]= random_sparse_network(NO, NC, N, density);
 
 % covariance matrix
@@ -204,6 +207,7 @@ high = .5;
 low = 0.1;
 high = 1;
 figure;
+set(gcf,'units','normalized','position',[0 0 1 1]);
 subplot(1,3,1);imagesc(abs(theta_GT(1:(NO+NC),1:(NO+NC))));colorbar;caxis([low high])
 title('Ground Truth');
 subplot(1,3,2);imagesc(abs(AA));colorbar;caxis([low high])
